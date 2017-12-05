@@ -15,3 +15,8 @@ body {
   display: inline-block;
   margin: 5px;
 }
+
+.next-red {
+  background-color: rgba(255, 100, 100, 1);
+
+}
