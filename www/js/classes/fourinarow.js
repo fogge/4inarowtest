@@ -4,6 +4,8 @@ class Connect4 {
     // Uses rows & cols later for making the board
     this.ROWS = 6;
     this.COLS = 7;
+
+    this.player = 'red';
     // Making selector global inside the class.
     this.selector = selector;
     // Calls the method createGrid everytime we make a new class of Connect4.
@@ -33,6 +35,7 @@ class Connect4 {
 
   setupEventListeners() {
     const $board = $(this.selector);
+    const that = this;
 
     // Funktion tar in en inparemeter.
     function findLastEmptyCell(col){
@@ -51,11 +54,21 @@ class Connect4 {
     $board.on('mouseenter', '.col.empty', function(){
       const col = $(this).data('col');
       const $lastEmptyCell = findLastEmptyCell(col);
-      $lastEmptyCell.addClass('next-red');
+      $lastEmptyCell.addClass(`next-${that.player}`);
     });
 
     $board.on('mouseleave', '.col.empty', function(){
-      $('.col').removeClass('next-red');
+      $('.col').removeClass(`next-${that.player}`);
+    });
+
+    $board.on('click', '.col.empty', function(){
+      const col = $(this).data('col');
+      const $lastEmptyCell = findLastEmptyCell(col);
+      $lastEmptyCell.removeClass(`empty next-${that.player}`);
+      $lastEmptyCell.addClass(that.player);
+      that.player = (that.player === 'red') ? 'yellow' : 'red';
+      $(this).trigger('mouseenter');
     })
+
   }
 }

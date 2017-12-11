@@ -3,20 +3,35 @@ body {
 }
 
 #connect4 {
-  background-color: black;
+  background-color: green;
   display: inline-block;
 }
 
 .col {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   background-color: white;
   border-radius: 50%;
   display: inline-block;
   margin: 5px;
 }
 
+.col.empty {
+  cursor: pointer;
+}
+
 .next-red {
   background-color: rgba(255, 100, 100, 1);
+}
 
+.next-yellow {
+  background-color: rgba(255, 255, 100, 1);
+}
+
+.col.red {
+  background-color: red;
+}
+
+.col.yellow {
+  background-color: yellow;
 }
